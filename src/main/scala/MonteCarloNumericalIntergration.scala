@@ -28,16 +28,15 @@ object MonteCarloNumericalIntergration{
 
   def IntegrationDoublePar(f: Double => Double, from: Double, to: Double, n: Int) = {
     val (pi1, pi2, pi3, pi4) = parallel(
-      CountSquere(f, from, to, n/4),
-      CountSquere(f, from, to, n/4),
-      CountSquere(f, from, to, n/4),
-      CountSquere(f, from, to, n/4)
+      CountSquere(f, from, to, n / 4),
+      CountSquere(f, from, to, n / 4),
+      CountSquere(f, from, to, n / 4),
+      CountSquere(f, from, to, n / 4)
     )
-    (pi1 + pi2 + pi3 + pi4)/n
   }
 
   def main(args: Array[String]): Unit = {
-    val totalNumberOfPoints = 500000
+    val totalNumberOfPoints = 100000
     val from = -20
     val to = 20
 
@@ -56,7 +55,7 @@ object MonteCarloNumericalIntergration{
     }
 
     val partime = standardConfig measure {
-      IntegrationDoublePar(function, from, to, totalNumberOfPoints)
+      IntegrationPar(function, from, to, totalNumberOfPoints)
     }
 
     println(s"sequential time $seqtime ms")

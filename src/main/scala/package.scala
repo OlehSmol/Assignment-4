@@ -39,5 +39,4 @@ package object parallel {
     val td = taskD
     (ta.join(), tb.join(), tc.join(), td)
   }
-
 }
